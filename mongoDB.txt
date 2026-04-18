@@ -133,3 +133,57 @@ db.students.updateOne(
   { $inc: { marks: 5 } }
 )
 // Hina's marks: 85 → 90
+
+// ── $mul: Increase ALL students' fees by 10% ──
+db.students.updateMany(
+  {},
+  { $mul: { fees: 1.10 } }
+)
+
+// ── Deactivate Bilal (soft delete) ──
+db.students.updateOne(
+  { email: "bilal@gmail.com" },
+  { $set: { isActive: false } }
+)
+
+// ── $unset: Remove a field from Sara's document ──
+db.students.updateOne(
+  { email: "sara@gmail.com" },
+  { $unset: { age: "" } }
+)
+
+// ── Step 1: Always verify with find() BEFORE deleting ──
+db.students.find({ email: "bilal@gmail.com" })
+// Confirms Bilal exists — safe to delete
+
+// ── deleteOne: Remove Bilal Ahmed ──
+db.students.deleteOne({ email: "bilal@gmail.com" })
+// Returns: { acknowledged: true, deletedCount: 1 }
+
+// ── deleteMany: Remove all test documents ──
+db.students.deleteMany({ isActive: true })
+
+// ── $or: Active OR marks above 85 ──
+db.students.find({
+  $or: [
+    { isActive: true },
+    { marks: { $gt: 85 } }
+  ]
+})
+
+// ── $and: Lahore students AND marks above 80 ──
+db.students.find({
+  $and: [
+    { city: "Lahore" },
+    { marks: { $gt: 80 } }
+  ]
+})
+// Returns: Ali Hassan, Hina Malik
+
+// ── $ne: Students NOT enrolled in MERN Stack ──
+db.students.find({ course: { $ne: "MERN Stack" } })
+// Returns: Sara, Usman, Hina
+
+// ── $exists: Find students who have an 'age' field ──
+db.students.find({ age: { $exists: true } })
+
