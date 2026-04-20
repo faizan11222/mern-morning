@@ -1,0 +1,11 @@
+Backend:
+  Folder Structure:
+   - config (db.js) database 
+   - models (students.js) database collection schema
+   - Controller (StudentController.js) all logical part will be here. APIs will be written here.
+   - routes (StudentRoutes.js) here we define the links/routes of the APIs
+   - .env (file)
+   - server.js (base file)
+   - package.json
+
+   - mongoDB package to install in nodejs (npm install mongoose)
