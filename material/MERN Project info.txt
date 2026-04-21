@@ -9,3 +9,9 @@ Backend:
    - package.json
 
    - mongoDB package to install in nodejs (npm install mongoose)
+
+   Methods to use the APIs:
+   - Create (POST)
+   - Read (GET)
+   - Update (PATCH, PUT)
+   - Delete (DELETE)
