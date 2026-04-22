@@ -15,3 +15,10 @@ Backend:
    - Read (GET)
    - Update (PATCH, PUT)
    - Delete (DELETE)
+
+   API methods has 2 parameters:
+   - route
+   - function
+
+   Nodejs behaves asynchronously:
+   1. use async await
