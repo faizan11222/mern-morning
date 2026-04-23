@@ -51,5 +51,54 @@ const getAllStudents = async(req,res) => {
         })
     }
 }
+
+//API to get any specific student data
+const getStudentById = async(req,res) => {
+    try{
+        const student = await Student.findById(req.params.id);
+        if(!student){
+            return res.status(404).json({
+                success:false,
+                message:'Student not found'
+            })
+        }
+        res.status(200).json({
+            success:true,
+            message:'Here is Student data:',
+            data: student
+        })
+    }catch(error){
+    if(error.name == 'CastError'){
+        return res.status(400).json({
+            success:false,
+            message:'Invalid ID format'
+        })
+        res.status(500).json({
+            success:false,
+            message:'Server error'
+        })
+    }
+    }
+}
+
+//API to update the specific student data
+const updateStudent = async(req,res) => {
+    try{
+    const {name,email,course,city,marks} = req.body;
+    
+    //validation
+    if(!name || !email || !course || !city || !marks === undefined){
+        return res.status(400).json({
+            success:false,
+            message:'please provide the required fields'
+        })
+
+        
+    }
+    }catch(error){
+
+    }
+}
+
 //exporting this module
-module.exports = { addStudent, getAllStudents };
+module.exports = { addStudent, getAllStudents, getStudentById };
