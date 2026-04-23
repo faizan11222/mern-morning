@@ -35,11 +35,6 @@ app.use('/api/students',studentRoutes);
 const PORT = process.env.PORT
 
 
-//demo running of api
-app.get('/test',(req,res) => {
-    res.json('this is a testing API');
-})
-
 //running the server on this port now
 app.listen(PORT, () => {
     console.log(`Port is running on ${PORT}`)

@@ -3,10 +3,12 @@ const express = require('express');
 
 const router = express.Router();
 //importing the student controller
-const { addStudent } = require('../controllers/studentcontroller')
+const { addStudent, getAllStudents } = require('../controllers/studentcontroller')
 
 //defining the route
-router.post('/add',addStudent);
+router.post('/addstudents',addStudent);
+//route of getting all students data
+router.get('/allstudents',getAllStudents)
 
 //finally exporting the router
 module.exports = router;
