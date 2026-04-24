@@ -53,3 +53,7 @@ Document of MongoDB:there are 2 types of databases:
 
       download mongoDB 6 version:
       Windows (MSI): https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-6.0.15-signed.msi
+
+      - there are 2 methods to get data from API
+         - fetch() (always accept the GET request)
+         - axios() (it accepts all the methods of APIs)
