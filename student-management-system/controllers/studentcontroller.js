@@ -133,5 +133,28 @@ const updateStudent = async(req,res) => {
     }
 }
 
+//API for deleting the Student data
+const deleteStudent = async (req,res) => {
+    try{
+        await Student.findByIdAndDelete(req.params.id)
+        return res.status(200).json({
+            success:true,
+            message:'Student data deleted successfully!',
+            deleteId: req.params.id
+        })
+    }catch(error){
+           if(error.name == 'CastError'){
+        return res.status(400).json({
+            success:false,
+            message:'Invalid ID format'
+        })
+        res.status(500).json({
+            success:false,
+            message:'Server error'
+        })
+    }
+    }
+}
+
 //exporting this module
 module.exports = { addStudent, getAllStudents, getStudentById, updateStudent };

@@ -50,3 +50,6 @@ Document of MongoDB:there are 2 types of databases:
 
       .limit() function is used to limit the number of documents returned by a query.
       .skip() function is used to skip a specified number of documents in the query result.
+
+      download mongoDB 6 version:
+      Windows (MSI): https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-6.0.15-signed.msi
