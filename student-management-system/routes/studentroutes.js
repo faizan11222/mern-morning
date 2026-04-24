@@ -3,7 +3,7 @@ const express = require('express');
 
 const router = express.Router();
 //importing the student controller
-const { addStudent, getAllStudents, getStudentById, updateStudent } = require('../controllers/studentcontroller')
+const { addStudent, getAllStudents, getStudentById, updateStudent, deleteStudent } = require('../controllers/studentcontroller')
 
 //defining the route
 router.post('/addstudents',addStudent);
@@ -13,6 +13,8 @@ router.get('/allstudents',getAllStudents)
 router.get('/getstudent/:id', getStudentById)
 //route to upate the student
 router.put("/update/:id",updateStudent);
+//route for deleting the student data
+router.delete('/delete/:id', deleteStudent)
 
 //finally exporting the router
 module.exports = router;
