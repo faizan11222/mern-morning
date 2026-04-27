@@ -6,3 +6,6 @@ const api = axios.create({
     //also need to tell the frontend that our APIs are in JSON format
     headers: {'Content-Type':'application/json'}
 })
+
+//function to get allstudents API
+export const getAllStudents = async() => (await api.get('/students/allstudents'))
