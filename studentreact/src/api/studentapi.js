@@ -8,4 +8,12 @@ const api = axios.create({
 })
 
 //function to get allstudents API
-export const getAllStudents = async() => (await api.get('/students/allstudents'))
+export const getAllStudents = async() => (await api.get('/api/students/allstudents')).data
+//function to get student by ID API
+export const getStudentById = async(id) => (await api.get(`/api/students/getstudent/${id}`)).data
+//function to add student API
+export const addStudent = async(data) => (await api.post('/api/students/addstudents/',data)).data
+//function to update student API
+export const updateStudent = async(id,data) => (await api.put(`/api/students/update/${id}`,data)).data
+//function to delete student API
+export const deleteStudent = async(id) => (await api.delete(`/api/students/delete/${id}`)).data
