@@ -2,7 +2,7 @@ import { Card, Button, Container, Badge } from "react-bootstrap";
 
 const StudentCard = ({ student }) => { 
     return (
-    <Container className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>    
+    <Container className="d-flex justify-content-center align-items-center" style={{ height: '50vh' }}>    
     <Card style={{ width: '18rem' }}>
       <Card.Body>
         <Card.Title style={{ fontSize: '2.25rem' }}>{student.name}</Card.Title>
