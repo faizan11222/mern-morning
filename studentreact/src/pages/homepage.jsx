@@ -10,7 +10,26 @@ const HomePage = () => {
     //state for handling the error
     const [error, setError] = useState(null);
 
+
+    //function that will fetch the students data from the API
+    const fetchStudents = async () => {
+        try{
+            setLoading(true);
+            setError(null);
+            const data = await getAllStudents()
+            setStudents(data.data);
+        }catch(error){
+            setError("Error fetching students data");
+            console.log(error);
+        }finally{
+            setLoading(false);
+        }
+    }
     //using useEffect for getting students data from API
+    useEffect(() => {
+        fetchStudents();
+    }, []);
+
     return(        
         <div>
 
