@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Navbar, Nav, Container } from 'react-bootstrap'
+import { Navbar, Nav, Container, Button } from 'react-bootstrap'
 
 const AppNavbar = () => {
     //use to set the location/path
@@ -14,6 +14,7 @@ const AppNavbar = () => {
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/" active={pathname === '/'}>All Students</Nav.Link>
           </Nav>
+          <Button variant='primary' as={Link} to="/add">Add Student</Button>
         </Navbar.Collapse>
       </Container>
     </Navbar>

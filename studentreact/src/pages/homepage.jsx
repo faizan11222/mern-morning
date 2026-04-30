@@ -42,9 +42,9 @@ const HomePage = () => {
             //after deleting the data, now we need to filter the data
             setStudents(prev => prev.filter(s => s._id !== id))
             //showing the success message that student is deleted
-            setMessage({text:data.message})
+            setMessage({variant:'success', text:data.message})
         }catch(err){
-            setMessage({text:'Could not delete the student'})
+            setMessage({variant:'danger',text:'Could not delete the student'})
         }
     }
 
