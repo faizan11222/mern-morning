@@ -6,12 +6,21 @@ import { Row, Col, Form, Button } from "react-bootstrap";
 const COURSES = ['Mern stack','React','AI','Web','Graphic']
 const AddStudentPage = () => {
 
-   //state for handling the loading
+      //state for handling the form input fields
+      const [formData, setFormData] = useState({
+        name:'', email:'', course:'', marks:'', city:'' 
+      })
+      //state for handling the loading
       const [loading, setLoading] = useState(false);
       //state for handling the error
       const [error, setError] = useState({});
       //hook to showing the messages
       const [message, setMessage] = useState(null);
+
+      //function to capture every character of input fields
+      const handleChange = () => {
+        console.log('activated!');
+      }
     return(
        
        <Row className="justify-content-center">
@@ -20,7 +29,7 @@ const AddStudentPage = () => {
     <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Name:</Form.Label>
-        <Form.Control type="text" name="name" placeholder="Enter name" />
+        <Form.Control onChange={handleChange} type="text" name="name" placeholder="Enter name" />
         <Form.Text className="text-muted">
           Please enter your full name
         </Form.Text>
@@ -29,7 +38,7 @@ const AddStudentPage = () => {
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email:</Form.Label>
-        <Form.Control type="email" name="email" placeholder="Enter your email" />
+        <Form.Control onChange={handleChange} type="email" name="email" placeholder="Enter your email" />
         <Form.Text className="text-muted">
           Please enter your valid email address
         </Form.Text>
@@ -37,7 +46,7 @@ const AddStudentPage = () => {
 
        <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Select Course:</Form.Label>
-       <Form.Select name="course">
+       <Form.Select name="course" onChange={handleChange}>
        <option>--- Select a course ---</option>
        {COURSES.map(c => <option value={c}>{c}</option>)}
        </Form.Select>
@@ -45,7 +54,7 @@ const AddStudentPage = () => {
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Marks (0-100):</Form.Label>
-        <Form.Control type="number" name="marks" min={0} max={100} />
+        <Form.Control onChange={handleChange} type="number" name="marks" min={0} max={100} />
         <Form.Text className="text-muted">
           Please enter marks between 0 to 100
         </Form.Text>
@@ -53,7 +62,7 @@ const AddStudentPage = () => {
 
        <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>City:</Form.Label>
-        <Form.Control type="text" name="city" placeholder="Enter your city" />
+        <Form.Control onChange={handleChange} type="text" name="city" placeholder="Enter your city" />
       </Form.Group> 
 
       <div className="d-flex gap-2">
