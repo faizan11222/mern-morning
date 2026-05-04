@@ -18,15 +18,24 @@ const AddStudentPage = () => {
       const [message, setMessage] = useState(null);
 
       //function to capture every character of input fields
-      const handleChange = () => {
-        console.log('activated!');
+      const handleChange = (e) => {
+        //key value pair to get data from input fields in json format
+        const {name,value} = e.target;
+        setFormData(prev => ({...prev, [name]:value}));
+        console.log('updated data: ',{ ...formData,[name]:value})
+      }
+
+      //function that will run when we submit the form
+      const handleSubmit = async (e) => {
+        //prevent button to reload the page
+        e.preventDefault();
       }
     return(
        
        <Row className="justify-content-center">
         <Col md={6} lg={8}>
          <h1>Add Student</h1>
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Name:</Form.Label>
         <Form.Control onChange={handleChange} type="text" name="name" placeholder="Enter name" />
