@@ -1,6 +1,17 @@
+import { useState } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
 
+
+//array for courses list 
+const COURSES = ['Mern stack','React','AI','Web','Graphic']
 const AddStudentPage = () => {
+
+   //state for handling the loading
+      const [loading, setLoading] = useState(false);
+      //state for handling the error
+      const [error, setError] = useState({});
+      //hook to showing the messages
+      const [message, setMessage] = useState(null);
     return(
        
        <Row className="justify-content-center">
@@ -28,6 +39,7 @@ const AddStudentPage = () => {
         <Form.Label>Select Course:</Form.Label>
        <Form.Select name="course">
        <option>--- Select a course ---</option>
+       {COURSES.map(c => <option value={c}>{c}</option>)}
        </Form.Select>
       </Form.Group>  
 
