@@ -1,10 +1,14 @@
 import { useState } from "react";
-import { Row, Col, Form, Button } from "react-bootstrap";
+import { Row, Col, Form, Button, Alert } from "react-bootstrap";
+import { addStudent } from "../api/studentapi";
+import { useNavigate } from 'react-router-dom';
 
 
 //array for courses list 
 const COURSES = ['Mern stack','React','AI','Web','Graphic']
 const AddStudentPage = () => {
+  //using navigator to redirect the page
+  const navigate = useNavigate();
 
       //state for handling the form input fields
       const [formData, setFormData] = useState({
@@ -29,12 +33,23 @@ const AddStudentPage = () => {
       const handleSubmit = async (e) => {
         //prevent button to reload the page
         e.preventDefault();
+        try{
+        //finally saving the data into database
+        const data = await addStudent({...formData})
+        //showing the success message after saving the data
+        setMessage({ variant:'success', text:data.message })
+        //redirecting the user to main page
+        setTimeout(() => navigate('/'),2000);
+        }catch(err){
+          setMessage({ variant:'danger', text:'Could not add Student!' })
+        }
       }
     return(
        
        <Row className="justify-content-center">
         <Col md={6} lg={8}>
          <h1>Add Student</h1>
+         {message && <Alert variant={message.variant}>{message.text}</Alert>}
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Name:</Form.Label>
