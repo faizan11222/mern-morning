@@ -1,6 +1,7 @@
 import { Card, Button, Container, Badge } from "react-bootstrap";
-
+import { useNavigate } from "react-router-dom";
 const StudentCard = ({ student, onDelete }) => { 
+  const navigate = useNavigate();
   
   //function that create confirmation pop-up
   const handleDelete = () => {
@@ -8,8 +9,11 @@ const StudentCard = ({ student, onDelete }) => {
      onDelete(student._id);
     }
   }
+
+  //function for routing the edit button
+  const handleEdit = () => navigate(`/edit/${student._id}`)
     return (
-    <Container className="d-flex justify-content-center align-items-center" style={{ height: '50vh' }}>    
+    <Container className="d-flex justify-content-center align-items-center" style={{ height: '32vh' }}>    
     <Card style={{ width: '28rem' }}>
       <Card.Body>
         <Card.Title style={{ fontSize: '2.25rem' }}>{student.name}</Card.Title>
@@ -21,7 +25,7 @@ const StudentCard = ({ student, onDelete }) => {
       </Card.Body>
 
       <Card.Footer className="text-muted pt-4">Marks: <Badge>{student.marks}</Badge>
-      <Button variant="warning" className="float-end mx-2">Edit</Button>
+      <Button variant="warning" className="float-end mx-2" onClick={handleEdit}>Edit</Button>
        <Button variant="danger" className="float-end" onClick={handleDelete}>Delete</Button>
       </Card.Footer>
     </Card>
