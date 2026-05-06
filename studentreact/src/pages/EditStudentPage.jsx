@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Form } from "react-bootstrap"
+import { Button, Container, Form } from "react-bootstrap"
 import { useNavigate, useParams } from "react-router-dom"
 
 //array for courses list 
@@ -22,12 +22,18 @@ const EditStudentPage = () => {
            //hook for submitting the student data
            const [submitting, setSubmitting] = useState(false);
 
-
+//function to capture every character of input fields
+      const handleChange = (e) => {
+        //key value pair to get data from input fields in json format
+        const {name,value} = e.target;
+        setFormData(prev => ({...prev, [name]:value}));
+        console.log('updated data: ',{ ...formData,[name]:value})
+      }
     return(
         <div>
             <Container>
     <h1>Edit Student Record</h1>
-    <Form onSubmit={handleSubmit}>
+    <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Name:</Form.Label>
         <Form.Control onChange={handleChange} type="text" name="name" placeholder="Enter name" />
@@ -67,7 +73,7 @@ const EditStudentPage = () => {
       </Form.Group> 
 
       <div className="d-flex gap-2">
-        <Button type="submit" variant="primary">Save Student</Button>
+        <Button type="submit" variant="primary">Edit Student</Button>
       </div>
       </Form>
             </Container>
