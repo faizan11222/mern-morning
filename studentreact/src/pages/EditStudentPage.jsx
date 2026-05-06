@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Container, Form } from "react-bootstrap"
+import { Alert, Button, Container, Form } from "react-bootstrap"
 import { useNavigate, useParams } from "react-router-dom";
 import { getStudentById, updateStudent } from "../api/studentapi";
 
@@ -65,6 +65,7 @@ const EditStudentPage = () => {
         <div>
     <Container>
     <h1>Edit Student Record</h1>
+    {message && <Alert variant={message.variant}>{message.text}</Alert>}
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Name:</Form.Label>
