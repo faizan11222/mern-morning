@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 
+const authRoutes = require('./routes/authroutes')
 //import the database connection function from config/db.js file
 const connectDB = require('./config/db');
 
@@ -29,6 +30,9 @@ app.use(cors());
 
 //router calling
 app.use('/api/students',studentRoutes);
+
+app.use('/api/auth',authRoutes);
+
 
 //running nodejs on registered port
 //getting port from .env file
